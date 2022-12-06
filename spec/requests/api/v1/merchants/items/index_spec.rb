@@ -9,32 +9,38 @@ describe "Index Merchant_Items API" do
 
     expect(response).to be_successful
 
-    items = JSON.parse(response.body, symbolize_names: true)
+    items = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(items.count).to eq(3)
 
     items.each do |item|
       expect(item).to have_key(:id)
-      expect(item[:id]).to be_an(Integer)
+      expect(item[:id]).to be_an(String)
 
-      expect(item).to have_key(:name)
-      expect(item[:name]).to be_a(String)
+      expect(item[:attributes]).to have_key(:name)
+      expect(item[:attributes][:name]).to be_a(String)
 
-      expect(item).to have_key(:description)
-      expect(item[:description]).to be_a(String)
+      expect(item[:attributes]).to have_key(:description)
+      expect(item[:attributes][:description]).to be_a(String)
 
-      expect(item).to have_key(:unit_price)
-      expect(item[:unit_price]).to be_a(Float)
+      expect(item[:attributes]).to have_key(:unit_price)
+      expect(item[:attributes][:unit_price]).to be_a(Float)
+    end
+  end
 
-      expect(item).to have_key(:merchant_id)
-      expect(item[:merchant_id]).to be_a(Integer)
-      expect(item[:merchant_id]).to eq(id.id)
+  context 'given a non-valid merchant ID' do
+    it 'returns an error' do
+      10.times { create(:merchant) }
+      get api_v1_merchant_path(Merchant.last.id + 1)
 
-      expect(item).to have_key(:created_at)
-      expect(item[:created_at]).to be_a(String)
+      expect(response).not_to be_successful
 
-      expect(item).to have_key(:updated_at)
-      expect(item[:updated_at]).to be_an(String)
+      merchant = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+
+      expect(merchant).to have_key(:errors)
+      expect(merchant[:errors]).to be_a(String)
     end
   end
 end
