@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :invoice do
-    customer { nil }
-    merchant { nil }
-    status { "MyString" }
+    status { Faker::Number.within(range: 0..2) }
+    association :customer, factory: :customer
+    association :merchant, factory: :customer
   end
 end
