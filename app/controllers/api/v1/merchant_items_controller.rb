@@ -1,5 +1,5 @@
-class Api::V1::Merchants::ItemsController < ApplicationController
+class Api::V1::MerchantItemsController < ApplicationController
   def index
-    reneder json: Item.where(merchant_id: params[:id])
+    render json: Item.where(merchant_id: params[:merchant_id])
   end
 end
