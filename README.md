@@ -1,24 +1,37 @@
-# README
+<a name="Rails-Engine"></a>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/josephhilby/rails-engine">
+    <img src="lib/Rails-Engine-Lite.png" alt="Logo" width="400" height="200">
+  </a>
 
-Things you may want to cover:
+<h1 align="center">Rails-Engine</h1>
+</div>
 
-* Ruby version
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-* System dependencies
+[...]
 
-* Configuration
+### Built With
 
-* Database creation
+* Ruby ~ 2.7.4
+* Rails ~ 5.2.8
 
-* Database initialization
+<!-- Phases -->
+## Phases
 
-* How to run the test suite
+[Turing Project Requirements](https://backend.turing.edu/module3/projects/rails_engine_lite/requirements)
 
-* Services (job queues, cache servers, search engines, etc.)
+<!-- CONTACT -->
+## Contact
 
-* Deployment instructions
+Joseph H. - Joseph.Hilby@gmail.com
 
-* ...
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* Turing School of Software Design: [https://turing.edu/](https://turing.edu/)
+
