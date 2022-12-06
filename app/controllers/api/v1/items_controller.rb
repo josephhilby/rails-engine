@@ -12,12 +12,15 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    # require'pry';binding.pry
-    render json: Item.create(item_params)
+    render json: ItemSerializer.new(Item.create(item_params)), status: 201
   end
 
   def update
-    render jason: Item.update(params[:id], item_params)
+    if Item.exists?(params[:id])
+      render json: ItemSerializer.new(Item.update(params[:id], item_params))
+    else
+      render json: { errors: 'Not Found' }, status: 404
+    end
   end
 
   def destroy

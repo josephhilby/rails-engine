@@ -15,7 +15,7 @@ describe "Create Items API" do
     # We include this header to make sure that these params are passed as JSON rather than as plain text
     post api_v1_items_path, headers: headers, params: JSON.generate(item: item_params)
     created_item = Item.last
-    # require'pry';binding.pry
+
     expect(response).to be_successful
     expect(created_item.name).to eq(item_params[:name])
     expect(created_item.description).to eq(item_params[:description])
