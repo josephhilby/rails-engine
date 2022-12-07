@@ -1,18 +1,26 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    render json: Item.all
+    render json: ItemSerializer.new(Item.all)
   end
 
   def show
-    render json: Item.find(params[:id])
+    if Item.exists?(params[:id])
+      render json: ItemSerializer.new(Item.find(params[:id]))
+    else
+      render json: { errors: 'Not Found' }, status: 404
+    end
   end
 
   def create
-    render json: Item.create(item_params)
+    render json: ItemSerializer.new(Item.create(item_params)), status: 201
   end
 
   def update
-    render jason: Item.update(params[:id], item_params)
+    if Item.exists?(params[:id]) && (params[:item][:merchant_id] == nil || Merchant.exists?(params[:item][:merchant_id]))
+      render json: ItemSerializer.new(Item.update(params[:id], item_params))
+    else
+      render json: { errors: 'Not Found' }, status: 404
+    end
   end
 
   def destroy
@@ -22,6 +30,6 @@ class Api::V1::ItemsController < ApplicationController
   private
 
   def item_params
-    # params.require(:item).permit(...)
+    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
   end
 end
