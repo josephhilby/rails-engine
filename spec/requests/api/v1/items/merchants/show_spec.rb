@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe "Index Item_Merchants API" do
+describe "Show Item_Merchants API" do
   context 'given a valid item ID' do
-    it "can GET the merchant by items merchant ID" do
+    it "can GET a merchant by items merchant ID" do
       id = create(:merchant)
       item = create(:item, merchant: id)
 
@@ -11,7 +11,7 @@ describe "Index Item_Merchants API" do
       expect(response).to be_successful
 
       merchant = JSON.parse(response.body, symbolize_names: true)[:data]
-      require'pry';binding.pry
+
       expect(merchant).to have_key(:id)
       expect(merchant[:id]).to be_an(String)
 
@@ -21,9 +21,11 @@ describe "Index Item_Merchants API" do
   end
 
   context 'given a non-valid item ID' do
-    xit 'returns an error' do
-      10.times { create(:merchant) }
-      get api_v1_merchant_path(Merchant.last.id + 1)
+    it 'returns an error' do
+      id = create(:merchant)
+      create(:item, merchant: id)
+
+      get api_v1_path(Item.last.id + 1)
 
       expect(response).not_to be_successful
 

@@ -32,8 +32,8 @@ describe "Index Merchant_Items API" do
 
   context 'given a non-valid merchant ID' do
     it 'returns an error' do
-      10.times { create(:merchant) }
-      get api_v1_merchant_path(Merchant.last.id + 1)
+      create(:merchant)
+      get api_v1_merchant_items_path(Merchant.last.id + 1)
 
       expect(response).not_to be_successful
 

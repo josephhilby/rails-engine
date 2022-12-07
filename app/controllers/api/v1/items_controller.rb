@@ -16,7 +16,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
-    if Item.exists?(params[:id])
+    if Item.exists?(params[:id]) && (params[:item][:merchant_id] == nil || Merchant.exists?(params[:item][:merchant_id]))
       render json: ItemSerializer.new(Item.update(params[:id], item_params))
     else
       render json: { errors: 'Not Found' }, status: 404

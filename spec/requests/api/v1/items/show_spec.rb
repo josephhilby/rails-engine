@@ -27,7 +27,7 @@ describe "Show Items API" do
 
   context 'given a non-valid ID' do
     it 'returns an error' do
-      10.times { create(:item) }
+      create(:item)
       get api_v1_item_path(Item.last.id + 1)
 
       expect(response).not_to be_successful

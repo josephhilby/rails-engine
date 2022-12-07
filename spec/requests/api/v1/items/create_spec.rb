@@ -12,7 +12,6 @@ describe "Create Items API" do
       })
     headers = {"CONTENT_TYPE" => "application/json"}
 
-    # We include this header to make sure that these params are passed as JSON rather than as plain text
     post api_v1_items_path, headers: headers, params: JSON.generate(item: item_params)
     created_item = Item.last
 

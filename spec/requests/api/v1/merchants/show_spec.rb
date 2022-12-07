@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Index Merchants API" do
+describe "Show Merchants API" do
   context 'given a valid ID' do
     it "can GET one merchant by ID" do
       id = create(:merchant)
@@ -20,7 +20,7 @@ describe "Index Merchants API" do
 
   context 'given a non-valid ID' do
     it 'returns an error' do
-      10.times { create(:merchant) }
+      create(:merchant)
       get api_v1_merchant_path(Merchant.last.id + 1)
 
       expect(response).not_to be_successful
