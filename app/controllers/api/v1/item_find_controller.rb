@@ -49,11 +49,11 @@ module Api
       end
 
       def params_name_and_price?
-        (!params[:name] && (!params[:min_price] && !params[:max_price]))
+        (!!params[:name] && (!!params[:min_price] || !!params[:max_price]))
       end
 
       def params_missing?
-        (!!params[:name] && (!!params[:min_price] || !!params[:max_price]))
+        (!params[:name] && (!params[:min_price] && !params[:max_price]))
       end
 
       def params_neg_num?
