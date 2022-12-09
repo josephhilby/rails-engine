@@ -6,15 +6,18 @@ module Api
       before_action :check_params
 
       def index
-        render json: MerchantSerializer.new(Merchant.where('name ~* :name', { name: params[:name] }).order(:name))
+        render json: MerchantSerializer.new(search_by_name)
       end
 
       def show
-        merchant = Merchant.where('name ~* :name', { name: params[:name] }).order(:name).first || Merchant.new
-        render json: MerchantSerializer.new(merchant)
+        render json: MerchantSerializer.new(search_by_name.first || Merchant.new)
       end
 
       private
+
+      def search_by_name
+        Merchant.where('name ~* :name', { name: params[:name] }).order(:name)
+      end
 
       def check_params
         return unless params[:name] == '' || !params[:name]
