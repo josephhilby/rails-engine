@@ -13,7 +13,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[...]
+Service API for a mock E-commerce application.
 
 ### Built With
 
@@ -24,6 +24,11 @@
 ## Phases
 
 [Turing Project Requirements](https://backend.turing.edu/module3/projects/rails_engine_lite/requirements)
+
+- [x] RESTful Endpoints for merchants and items
+- [x] Include CRUD functionality for items
+- [x] Non-RESTful Endpoints for searching items and merchants
+- [x] Include Sad-path testing for searches
 
 <!-- CONTACT -->
 ## Contact
