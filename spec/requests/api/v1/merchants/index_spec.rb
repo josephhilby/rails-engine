@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Index Merchants API" do
-  it "can GET all merchants" do
+describe 'Index Merchants API' do
+  it 'can GET all merchants' do
     create_list(:merchant, 3)
     get api_v1_merchants_path
 

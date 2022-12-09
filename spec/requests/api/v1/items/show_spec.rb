@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Show Items API" do
+describe 'Show Items API' do
   context 'given a valid ID' do
-    it "can GET one item by ID" do
+    it 'can GET one item by ID' do
       id = create(:item)
 
       get api_v1_item_path(id)

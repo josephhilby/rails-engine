@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'faker'
 
-describe "Create Items API" do
-  it "can POST a new item" do
+describe 'Create Items API' do
+  it 'can POST a new item' do
     id = create(:merchant).id
-    item_params = ({
-        name: Faker::Commerce.product_name,
-        description: Faker::Marketing.buzzwords,
-        unit_price: Faker::Number.within(range: 10..1_000),
-        merchant_id: id
-      })
-    headers = {"CONTENT_TYPE" => "application/json"}
+    item_params = {
+      name: Faker::Commerce.product_name,
+      description: Faker::Marketing.buzzwords,
+      unit_price: Faker::Number.within(range: 10..1_000),
+      merchant_id: id
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
 
     post api_v1_items_path, headers: headers, params: JSON.generate(item: item_params)
     created_item = Item.last

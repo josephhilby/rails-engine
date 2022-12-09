@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Index Merchant_Items API" do
+describe 'Index Merchant_Items API' do
   context 'given a valid merchant ID' do
-    it "can GET all items of merchant by ID" do
+    it 'can GET all items of merchant by ID' do
       id = create(:merchant)
       3.times { create(:item, merchant: id) }
 

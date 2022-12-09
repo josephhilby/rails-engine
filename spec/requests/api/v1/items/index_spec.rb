@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Index Items API" do
-  it "can GET all items" do
+describe 'Index Items API' do
+  it 'can GET all items' do
     create_list(:item, 3)
 
     get api_v1_items_path
