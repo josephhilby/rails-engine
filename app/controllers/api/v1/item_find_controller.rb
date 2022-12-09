@@ -33,10 +33,6 @@ class Api::V1::ItemFindController < ApplicationController
     end
   end
 
-  def number?(param)
-    (!!Float(param) rescue false) && !param.to_i.negative?
-  end
-
   def check_params
     if params_empty? || params_name_and_price? || params_missing? || params_neg_num? || params_min_more_than_max?
       render json: { errors: 'Non-valid params' }, status: 400
@@ -57,6 +53,10 @@ class Api::V1::ItemFindController < ApplicationController
 
   def params_neg_num?
     (!number?(params[:min_price]) && !number?(params[:max_price]) && (params[:min_price] != nil || params[:max_price] != nil))
+  end
+
+  def number?(param)
+    (!!Float(param) rescue false) && !param.to_i.negative?
   end
 
   def params_min_more_than_max?
