@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Show Merchant_Find API" do
+describe 'Show Merchant_Find API' do
   before(:each) do
-    create(:merchant, name: "Johi")
-    create(:merchant, name: "John Smith")
-    create(:merchant, name: "Littlejohns Jacob")
-    create(:merchant, name: "Mike Johnson")
+    create(:merchant, name: 'Johi')
+    create(:merchant, name: 'John Smith')
+    create(:merchant, name: 'Littlejohns Jacob')
+    create(:merchant, name: 'Mike Johnson')
   end
   context 'given valid params' do
-    it "can GET first merchant that match given name" do
+    it 'can GET first merchant that match given name' do
       get '/api/v1/merchants/find?name=john'
 
       expect(response).to be_successful
@@ -20,7 +22,7 @@ describe "Show Merchant_Find API" do
 
       expect(merchant[:attributes]).to have_key(:name)
       expect(merchant[:attributes][:name]).to be_a(String)
-      expect(merchant[:attributes][:name]).to eq("John Smith")
+      expect(merchant[:attributes][:name]).to eq('John Smith')
     end
   end
 

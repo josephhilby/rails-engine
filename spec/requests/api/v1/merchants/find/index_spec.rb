@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Index Merchant_Find API" do
+describe 'Index Merchant_Find API' do
   before(:each) do
-    create(:merchant, name: "Johi")
-    create(:merchant, name: "John Smith")
-    create(:merchant, name: "Littlejohns Jacob")
-    create(:merchant, name: "Mike Johnson")
+    create(:merchant, name: 'Johi')
+    create(:merchant, name: 'John Smith')
+    create(:merchant, name: 'Littlejohns Jacob')
+    create(:merchant, name: 'Mike Johnson')
   end
   context 'given valid params' do
-    it "can GET all merchants that match given name" do
+    it 'can GET all merchants that match given name' do
       get '/api/v1/merchants/find_all?name=john'
 
       expect(response).to be_successful

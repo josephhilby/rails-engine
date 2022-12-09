@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Show Item_Find API" do
+describe 'Show Item_Find API' do
   before(:each) do
     create(:item, name: 'Thing One', unit_price: 5.00)
     create(:item, name: 'Athingie', unit_price: 10.00)
@@ -8,7 +10,7 @@ describe "Show Item_Find API" do
     create(:item, name: 'Item One', unit_price: 20.00)
   end
   context 'given valid price params' do
-    it "can GET an item that matches given min_price" do
+    it 'can GET an item that matches given min_price' do
       get '/api/v1/items/find?min_price=10.00'
 
       expect(response).to be_successful
@@ -23,7 +25,7 @@ describe "Show Item_Find API" do
       expect(item[:attributes][:unit_price] >= 10.00).to be(true)
     end
 
-    it "can GET an item that matches given max_price" do
+    it 'can GET an item that matches given max_price' do
       get '/api/v1/items/find?max_price=15.00'
 
       expect(response).to be_successful
@@ -38,7 +40,7 @@ describe "Show Item_Find API" do
       expect(item[:attributes][:unit_price] <= 15.00).to be(true)
     end
 
-    it "can GET an item that matches given min & max_price" do
+    it 'can GET an item that matches given min & max_price' do
       get '/api/v1/items/find?min_price=10.00&max_price=15.00'
 
       expect(response).to be_successful
@@ -56,7 +58,7 @@ describe "Show Item_Find API" do
   end
 
   context 'given valid name params' do
-    it "can GET an item that matches given min_price" do
+    it 'can GET an item that matches given min_price' do
       get '/api/v1/items/find?name=thing'
 
       expect(response).to be_successful

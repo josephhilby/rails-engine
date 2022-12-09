@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "Index Item_Find API" do
+describe 'Index Item_Find API' do
   before(:each) do
     create(:item, name: 'Thing One', unit_price: 5.00)
     create(:item, name: 'Athingie', unit_price: 10.00)
@@ -8,7 +10,7 @@ describe "Index Item_Find API" do
     create(:item, name: 'Item One', unit_price: 20.00)
   end
   context 'given valid price params' do
-    it "can GET all items that match given min_price" do
+    it 'can GET all items that match given min_price' do
       get '/api/v1/items/find_all?min_price=10.00'
 
       expect(response).to be_successful
@@ -25,7 +27,7 @@ describe "Index Item_Find API" do
       end
     end
 
-    it "can GET all items that match given max_price" do
+    it 'can GET all items that match given max_price' do
       get '/api/v1/items/find_all?max_price=15.00'
 
       expect(response).to be_successful
@@ -42,7 +44,7 @@ describe "Index Item_Find API" do
       end
     end
 
-    it "can GET all items that match given min & max_price" do
+    it 'can GET all items that match given min & max_price' do
       get '/api/v1/items/find_all?min_price=10.00&max_price=15.00'
 
       expect(response).to be_successful
@@ -62,7 +64,7 @@ describe "Index Item_Find API" do
   end
 
   context 'given valid name params' do
-    it "can GET an item that matches given name" do
+    it 'can GET an item that matches given name' do
       get '/api/v1/items/find_all?name=thing'
 
       expect(response).to be_successful

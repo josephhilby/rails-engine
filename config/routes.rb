@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
       get '/merchants/find', to: 'merchant_find#show'
       get '/merchants/find_all', to: 'merchant_find#index'
-      resources :merchants, only: [:index, :show] do
+      resources :merchants, only: %i[index show] do
         resources :items, controller: :merchant_items, only: [:index]
       end
       resources :items
